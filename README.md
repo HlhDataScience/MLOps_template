@@ -23,7 +23,7 @@ A flexible and customizable [Cookiecutter](https://cookiecutter.readthedocs.io/)
 
 ```bash
 cd <your-project-name>
-make initialize_all
+make -f Makefile.init initialize_all
 ```
 Requirements:
 - Python 3.11+
