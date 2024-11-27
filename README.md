@@ -12,3 +12,23 @@ A flexible and customizable [Cookiecutter](https://cookiecutter.readthedocs.io/)
 1. Install Cookiecutter:
    ```bash
    pip install cookiecutter
+
+2. Generate a new project:
+
+```bash
+   cookiecutter gh:<your-username>/<repository-name>
+```
+
+3. Navigate to the project directory and initialize:
+
+```bash
+cd <your-project-name>
+make initialize_all
+```
+Requirements:
+- Python 3.11+
+- Poetry
+- Git
+- Pre-commit
+License
+This project is licensed under the {{cookiecutter.license}} License.
