@@ -1,4 +1,4 @@
-# {{cookiecutter.project_name}} Cookiecutter Template
+# {{cookiecutter.project_name}} MLOps_template
 
 A flexible and customizable [Cookiecutter](https://cookiecutter.readthedocs.io/) template to kickstart Python projects with Poetry, pre-commit hooks, and a Makefile for automation.
 
