@@ -1,3 +1,5 @@
+# Makefile for initializing a new project
+
 # Install Poetry dependencies
 install-poetry:  ## Install Poetry dependencies
 	@echo "Installing Poetry dependencies..."
@@ -12,51 +14,21 @@ activate:  ## Activate the Poetry virtual environment
 git_initialization:  ## Initialize Git repository
 	@echo "Initializing Git..."
 	git init
-	git add .
-	git commit -m "Initial commit"
 
 # Install pre-commit hooks
 pre-commit:  ## Install pre-commit hooks
-	@if [ ! -f .pre-commit-config.yaml ]; then \
-		echo "Error: .pre-commit-config.yaml not found! Please add it first."; \
-		exit 1; \
-	fi
 	@echo "Installing pre-commit hooks..."
 	pre-commit install
 
-# Generate .gitignore
-generate-gitignore:  ## Generate a .gitignore file
-	@echo "Generating .gitignore..."
-	@echo ".venv/" > .gitignore
-	@echo "__pycache__/" >> .gitignore
-	@echo "*.py[cod]" >> .gitignore
-	@echo ".mypy_cache/" >> .gitignore
-	@echo ".pytest_cache/" >> .gitignore
-	@echo "dist/" >> .gitignore
-	@echo "build/" >> .gitignore
-
-# Check required tools
-check-tools:  ## Verify required tools are installed
-	@if ! command -v git &>/dev/null; then \
-		echo "Error: git is not installed."; \
-		exit 1; \
-	fi
-	@if ! command -v poetry &>/dev/null; then \
-		echo "Error: poetry is not installed."; \
-		exit 1; \
-	fi
-	@if ! command -v pre-commit &>/dev/null; then \
-		echo "Error: pre-commit is not installed."; \
-		exit 1; \
-	fi
-	@echo "All required tools are installed."
-
-# Initialize all
-initialize_all: check-tools install-poetry activate git_initialization pre-commit generate-gitignore  ## Initialize everything
+# Install dependencies and tools, and set up the project
+initialize_all: install-poetry activate git_initialization pre-commit  ## Initialize all
 	@echo "Project successfully initialized."
 
 # Help command to show available options
 help:  ## Show this help message
 	@echo "Available commands:"
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  make %-20s %s\n", $$1, $$2}'
-
+	@echo "  make install-poetry        Install Poetry dependencies"
+	@echo "  make activate              Activate virtual environment"
+	@echo "  make git_initialization    Initialize Git repository"
+	@echo "  make pre-commit            Install pre-commit hooks"
+	@echo "  make initialize_all        Initialize everything (Poetry, Git, pre-commit)"
