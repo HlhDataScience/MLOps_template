@@ -1,7 +1,7 @@
 {
 	"project_name": "mlops_template",
 	"package_name": "mlops_package",
-	"author_name:": "Héctor López Hidalgo",
+	"author_name": "Héctor López Hidalgo",
 	"Licence": "MIT",
 	"version": "0.1.0",
 	"description": "A template for MLOps projects"
